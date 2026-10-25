@@ -27,14 +27,17 @@ jobs:
       # 正式切域名时删除这一步，并把 CNAME 一起发布。
       - name: Remove CNAME for preview deployment
         run: rm -f CNAME
-      # 预览在 /PepperCraftScenic/ 子路径下，404 的根绝对资源会失效；仅预览改成相对。
+      # 预览在 /PepperCraftScenic/ 子路径下；注入 base 并改成相对路径，
+      # 这样 /PepperCraftScenic/a/b 这类多层 404 也能正确加载资源。
       - name: Adjust 404 for project-subpath preview
         run: |
+          repo="${GITHUB_REPOSITORY#*/}"
           sed -i \
             -e 's#href="/assets/#href="assets/#g' \
             -e 's#src="/assets/#src="assets/#g' \
             -e 's#href="/"#href="./"#g' \
             404.html
+          sed -i "s#<head>#<head>\n    <base href=\"/${repo}/\" />#" 404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
