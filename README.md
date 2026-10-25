@@ -56,9 +56,11 @@ python3 -m http.server 8799
 
 ## 部署
 
-推送到 `main` 后，GitHub Actions 会把整个目录发布到 GitHub Pages。首次需要在仓库 **Settings → Pages** 把 Source 设为 **GitHub Actions**，并让 `web.pepper.ltd` 的 CNAME 指向 `<用户名>.github.io`。
+推送到 `main` 后，GitHub Actions 会把整个目录发布到 GitHub Pages。当前预览：<https://nullpepper.github.io/PepperCraftScenic/>（仓库：<https://github.com/nullpepper/PepperCraftScenic>）。
 
-404 页使用 `/assets/...` 根绝对路径，前提是自定义域名部署在域名根；若部署在 `/<repo>/` 子路径，需要改成带前缀的路径或 `<base href="/<repo>/">`。
+预览工作流在 upload 前执行 `Remove CNAME for preview deployment`（`rm -f CNAME`），避免 `web.pepper.ltd` 把预览抢成自定义域；仓库根目录仍保留 `CNAME` 供正式切换。预览还会把 404 页的 `/assets/...` 改成相对路径，以适配 `/<repo>/` 子路径；正式根域部署应删除这两个预览步骤。
+
+正式切换：先把 `web.pepper.ltd` 的 DNS 从 Vercel 改到 GitHub Pages（CNAME 到 `nullpepper.github.io`，按 GitHub 提示验证），在 **Settings → Pages** 设置 custom domain；然后删除 `deploy.yml` 里两个预览步骤并推送。生产 404 使用 `/assets/...` 根绝对路径。
 
 上线前注意：当前 `index.html` 的 `canonical`、`og:url`、`og:image`，以及 `sitemap.xml` 仍使用 `web.pepper.ltd`；该域名目前会 307 到 `www.pepper.ltd`。这一项本次按需求保留未改，正式切换域名时需要一起统一。如果分享抓取器跨 307 丢图，还需要同时统一 `og:url` / `og:image` 的域名。
 
