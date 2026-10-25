@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PepperCraft · 世界很大，慢慢生活</title>
+    <meta
+      name="description"
+      content="PepperCraft 是 2023 年开服的高版本纯净生存公益服。Java 1.21–26.2 与基岩版可进，三年不清档，没有充值特权。服务器地址 pepper.ltd。"
+    />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="canonical" href="https://web.pepper.ltd/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PepperCraft · 世界很大，慢慢生活" />
+    <meta
+      property="og:description"
+      content="原版生存、三年不清档、完全公益。服务器地址 pepper.ltd，Java 1.21–26.2 与基岩版可进。"
+    />
+    <meta property="og:url" content="https://web.pepper.ltd/" />
+    <meta property="og:image" content="https://web.pepper.ltd/assets/img/og.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="PepperCraft 首页：主城实景、“世界很大，慢慢生活。”标题与服务器地址 pepper.ltd" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PepperCraft · 世界很大，慢慢生活" />
+    <meta
+      name="twitter:description"
+      content="原版生存、三年不清档、完全公益。服务器地址 pepper.ltd，Java 1.21–26.2 与基岩版可进。"
+    />
+    <meta name="twitter:image" content="https://web.pepper.ltd/assets/img/og.jpg" />
+    <meta name="twitter:image:alt" content="PepperCraft 首页：主城实景、“世界很大，慢慢生活。”标题与服务器地址 pepper.ltd" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="preload" href="assets/fonts/pepper-sans-bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/img/hero-1920.webp"
+      imagesrcset="assets/img/hero-960.webp 960w, assets/img/hero-1920.webp 1920w"
+      imagesizes="100vw"
+    />
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "GameServer",
+        "name": "PepperCraft",
+        "url": "https://web.pepper.ltd/",
+        "description": "高版本纯净生存公益服，Java 1.21–26.2 与基岩版可进，三年不清档。",
+        "game": "Minecraft"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "inLanguage": "zh-CN",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "服务器收费吗？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "完全免费的公益服：没有充值特权，没有氪金项目。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "存档会被清除吗？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "不会。2025 年 1 月服务器郑重决定：3 年内不再清除存档内容。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "可以用钻石当货币交易吗？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "可以，钻石就是通用货币。建议用 /diamond save <数量> 存入银行，用 /pay 转账，避免丢失。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "如何保护我的建筑？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "输入 /pclaim auto 一键圈出家园领地；加入或创建联盟（/union）后，还能用 /gclaim 圈联盟公共领地。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "服务器卡吗？允许高频红石吗？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "高性能硬件与优化配置，允许高频红石、刷铁机、地毯 / TNT 复制，同时有反作弊保障公平。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "基岩版怎么进？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "在游戏的服务器列表里添加 pepper.ltd；进服后名字前会带一个点，可以用 /tpgui、/homegui 等表单。"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+
+    <header class="site-head" data-head>
+      <div class="wrap head-inner">
+        <a class="brand" href="#top" aria-label="PepperCraft 首页">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="15" y="2" width="3" height="5" fill="currentColor" />
+            <rect x="19" y="4" width="4" height="3" fill="#b7d69a" />
+            <path fill="#e07a50" d="M9 9h5V7h7v2h4v4h-2v12h-3v3h-7v-3H9V9z" />
+            <path fill="#f6b18e" d="M14 12h4v3h-4z" />
+          </svg>
+          <span>PepperCraft</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="打开导航"
+          data-nav-toggle
+        >
+          <span class="nav-toggle-box" aria-hidden="true"><i></i><i></i></span>
+        </button>
+
+        <nav class="head-nav" id="site-nav" aria-label="页面导航">
+          <a href="#world">世界</a>
+          <a href="#join">进服</a>
+          <a href="#faq">问答</a>
+          <a href="https://docs.pepper.ltd" target="_blank" rel="noopener">文档</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-media" aria-hidden="true">
+          <img
+            src="assets/img/hero-1920.webp"
+            srcset="assets/img/hero-960.webp 960w, assets/img/hero-1920.webp 1920w"
+            sizes="100vw"
+            width="1920"
+            height="1080"
+            alt=""
+            fetchpriority="high"
+          />
+        </div>
+        <div class="hero-grade" aria-hidden="true"></div>
+        <div class="hero-veil" aria-hidden="true"></div>
+
+        <div class="wrap hero-inner">
+          <p class="eyebrow">
+            高版本纯净生存公益服
+          </p>
+
+          <h1>世界很大，<br />慢慢生活。</h1>
+
+          <p class="hero-lead">
+            2023 年开服的原版生存，<span class="nowrap">三年不清档</span>，<span class="nowrap">没有充值特权</span>。
+          </p>
+
+          <div class="server-panel">
+            <div class="server-top">
+              <span class="server-label">服务器地址</span>
+              <span
+                class="status-line"
+                data-status-line
+                data-tone="muted"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                <i aria-hidden="true"></i><span>实时状态需启用脚本</span>
+              </span>
+            </div>
+            <div class="server-main">
+              <code class="server-ip" data-copy-target>pepper.ltd</code>
+              <button class="copy-mini" type="button" data-copy="pepper.ltd">复制地址</button>
+            </div>
+            <p class="server-note">公开接口每分钟更新</p>
+          </div>
+        </div>
+
+        <div class="hero-foot wrap">
+          <a class="scroll-cue" href="#world">
+            <span>向下</span>
+            <i aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+
+      <section class="chapter" id="world">
+        <div class="wrap">
+          <header class="chapter-head">
+            <p class="kicker"><span>01</span> 这是一个怎样的世界</p>
+            <h2>三年了，<br />世界还是<br class="br-mobile" />原版的样子。</h2>
+            <p class="chapter-lede">
+              你熟悉的合成表、地形和节奏都还在。我们只是把服务器该做好的部分，认真做好了。
+            </p>
+          </header>
+
+          <div class="tiles">
+            <article class="tile">
+              <img
+                src="assets/img/redstone-tile.webp"
+                width="480"
+                height="720"
+                loading="lazy"
+                decoding="async"
+                alt="建在山间的红石机器与农场"
+              />
+              <div class="tile-shade" aria-hidden="true"></div>
+              <span class="tile-time">白天</span>
+              <div class="tile-body">
+                <span class="tile-index">01 · 山间红石</span>
+                <h3>红石自由</h3>
+                <p>高频红石、刷铁机、地毯与 TNT 复制都能用，Mojang 更新后同步跟上。</p>
+              </div>
+            </article>
+
+            <article class="tile">
+              <img
+                src="assets/img/garden-tile.webp"
+                width="480"
+                height="720"
+                loading="lazy"
+                decoding="async"
+                alt="主城花园里的水池、灯笼与木质栈道"
+              />
+              <div class="tile-shade" aria-hidden="true"></div>
+              <span class="tile-time">午后</span>
+              <div class="tile-body">
+                <span class="tile-index">02 · 主城花园</span>
+                <h3>纯净生存</h3>
+                <p>没有虚拟货币和复杂地皮，钻石是硬通货，家园与联盟领地各有保护。</p>
+              </div>
+            </article>
+
+            <article class="tile">
+              <img
+                src="assets/img/cabin-tile.webp"
+                width="447"
+                height="670"
+                loading="lazy"
+                decoding="async"
+                alt="夜色里亮着灯的木质小屋"
+              />
+              <div class="tile-shade" aria-hidden="true"></div>
+              <span class="tile-time">夜晚</span>
+              <div class="tile-body">
+                <span class="tile-index">03 · 夜灯木屋</span>
+                <h3>长期维护</h3>
+                <p>插件多为自研，本地与异地双重备份，混合反作弊一直在运行。</p>
+              </div>
+            </article>
+          </div>
+
+          <p class="world-note">三张图都拍自服务器实景，不是渲染图。</p>
+
+          <div class="world-stats" aria-label="服务器数据">
+            <div class="stat">
+              <span class="stat-number" data-days>3 年+</span>
+              <span class="stat-label">开服天数</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">25</span>
+              <span class="stat-label">个联盟</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">30<span>+</span></span>
+              <span class="stat-label">日均在线</span>
+            </div>
+          </div>
+          <p class="world-stats-note">联盟与日均数据截至 2026.10；开服天数自动更新。</p>
+        </div>
+      </section>
+
+      <section class="promise" aria-label="不清档承诺">
+        <div class="promise-media" aria-hidden="true">
+          <img
+            src="assets/img/group-1920.webp"
+            srcset="assets/img/group-960.webp 960w, assets/img/group-1920.webp 1920w"
+            sizes="100vw"
+            width="1920"
+            height="1298"
+            loading="lazy"
+            decoding="async"
+            alt=""
+          />
+        </div>
+        <div class="promise-veil" aria-hidden="true"></div>
+        <div class="wrap promise-inner">
+          <p class="kicker kicker-light"><span>02</span> 一句承诺</p>
+          <blockquote>“三年之内，<br />不清档。<span class="quote-close">”</span></blockquote>
+          <p class="promise-source">2025 年 1 月 · 服务器郑重承诺</p>
+          <p class="promise-log" aria-label="服务器时间线">
+            <span>2023.02.20 开服</span>
+            <span>2025.01 承诺</span>
+            <span>2026.10 仍在更新</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="join" id="join">
+        <div class="join-media" aria-hidden="true">
+          <img
+            src="assets/img/garden-1280.webp"
+            srcset="assets/img/garden-640.webp 640w, assets/img/garden-1280.webp 1280w"
+            sizes="100vw"
+            width="1280"
+            height="720"
+            loading="lazy"
+            decoding="async"
+            alt=""
+          />
+        </div>
+        <div class="join-veil" aria-hidden="true"></div>
+
+        <div class="wrap join-inner">
+          <header class="chapter-head chapter-head-light">
+            <p class="kicker kicker-light"><span>03</span> 三步进服</p>
+            <h2>从喜欢的地方<br />开始。</h2>
+            <p class="chapter-lede">
+              不需要整合包，不需要额外程序。用官方客户端，填上地址就能进来。
+            </p>
+          </header>
+
+          <div class="join-grid">
+            <div class="join-left">
+              <ol class="steps">
+              <li>
+                <span class="step-number">1</span>
+                <div>
+                  <h3>打开官方客户端</h3>
+                  <p>Java 版 1.21–26.2 或基岩版都可以；Java 用官方启动器，基岩版用游戏内服务器列表。</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-number">2</span>
+                <div>
+                  <h3>添加服务器</h3>
+                  <p>Java 在“多人游戏”里添加，基岩在“服务器”里添加，地址都填 <code>pepper.ltd</code>。服务器强制正版验证。</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-number">3</span>
+                <div>
+                  <h3>进世界，慢慢来</h3>
+                  <p>输入 <code>/pej</code> 去主世界，找块喜欢的地方，用 <code>/sethome</code> 设家。</p>
+                </div>
+              </li>
+            </ol>
+            </div>
+
+            <aside class="join-panel">
+              <p class="panel-label">现在就可以</p>
+              <p class="panel-ip" data-copy-target>pepper.ltd</p>
+              <button class="button button-light button-wide" type="button" data-copy="pepper.ltd">
+                复制服务器地址
+              </button>
+              <div class="panel-commands">
+                <p class="panel-label">进服后，先记这两条</p>
+                <dl>
+                  <div><dt><code>/pej</code></dt><dd>从主城去主世界</dd></div>
+                  <div><dt><code>/sethome</code></dt><dd>在喜欢的位置设家</dd></div>
+                </dl>
+              </div>
+
+              <p class="panel-note">基岩版进服后可用 <code>/tpgui</code>、<code>/homegui</code> 等表单。</p>
+
+              <div class="panel-foot">
+                <a class="text-link" href="https://docs.pepper.ltd" target="_blank" rel="noopener">
+                  完整文档 docs.pepper.ltd <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq" id="faq">
+        <div class="wrap faq-grid">
+          <header class="faq-head">
+            <p class="kicker kicker-dark"><span>04</span> 你可能想问</p>
+            <h2>进来之前，<br />先把疑问放下。</h2>
+
+            <div class="faq-contact">
+              <p class="panel-label">还有问题？</p>
+              <p>加群问一句，通常很快有人回答。</p>
+              <button class="faq-contact-copy" type="button" data-copy="754966689">
+                复制群号 754966689
+              </button>
+            </div>
+          </header>
+
+          <div class="faq-list">
+            <details open>
+              <summary>服务器收费吗？</summary>
+              <p>完全免费的公益服：没有充值特权，没有氪金项目。</p>
+            </details>
+            <details>
+              <summary>存档会被清除吗？</summary>
+              <p>不会。2025 年 1 月服务器郑重决定：3 年内不再清除存档内容。</p>
+            </details>
+            <details>
+              <summary>可以用钻石当货币交易吗？</summary>
+              <p>可以，钻石就是通用货币。建议用 <code>/diamond save &lt;数量&gt;</code> 存入银行，用 <code>/pay</code> 转账，避免丢失。</p>
+            </details>
+            <details>
+              <summary>如何保护我的建筑？</summary>
+              <p>输入 <code>/pclaim auto</code> 一键圈出家园领地；加入或创建联盟（<code>/union</code>）后，还能用 <code>/gclaim</code> 圈联盟公共领地。</p>
+            </details>
+            <details>
+              <summary>服务器卡吗？允许高频红石吗？</summary>
+              <p>高性能硬件与优化配置，允许高频红石、刷铁机、地毯 / TNT 复制，同时有反作弊保障公平。</p>
+            </details>
+            <details>
+              <summary>基岩版怎么进？</summary>
+              <p>在游戏的“服务器”里添加 <code>pepper.ltd</code>；进服后名字前会带一个点，可以用 <code>/tpgui</code>、<code>/homegui</code> 等表单。</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div>
+            <p class="footer-word">PepperCraft</p>
+            <p class="footer-tagline">世界很大，慢慢生活。</p>
+          </div>
+          <div class="footer-links">
+            <div>
+              <p class="footer-label">页面</p>
+              <a href="#world">世界</a>
+              <a href="#join">进服</a>
+              <a href="#faq">问答</a>
+              <a href="https://docs.pepper.ltd" target="_blank" rel="noopener">文档</a>
+            </div>
+            <div>
+              <p class="footer-label">联系</p>
+              <a href="https://qun.qq.com/universal-share/share?ac=1&amp;authKey=Uvy%2FwCNH6jghAKvofJE3uKqEEIM0Y0O8h9IBC0JEX%2BafERX1SdaJDD0XEZjZD33y&amp;busi_data=eyJncm91cENvZGUiOiI3NTQ5NjY2ODkiLCJ0b2tlbiI6IitYODc1bXVpWEYycmh0V1FFL0NhNWVvaVdLS3NnU3lzZlZiZVMwNG90Y3lSQm53MzFLOUY3b1VkcXF0SExEcW8iLCJ1aW4iOiIyNzQ3Nzg5OTE5In0%3D&amp;data=vMps1YS2bG4O5dfL8kc8n-XRUWMUo9FCnVjoUjDwSU_YI41N5_ddwC4WgypLXjf00z_-STGjlgI4ndCxDfggRQ&amp;svctype=4&amp;tempid=h5_group_info" target="_blank" rel="noopener">QQ 群 754966689</a>
+              <button type="button" class="footer-copy" data-copy="2747789919">腐竹 QQ 2747789919</button>
+              <button type="button" class="footer-copy" data-copy="pepper.ltd" title="复制服务器地址">pepper.ltd</button>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>2023.02.20 开服 · 非官方 Minecraft 项目，与 Mojang 无关，完全遵守官方 EULA。</p>
+          <p>© 2023–2026 PepperCraft</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="copy-live sr-only" aria-live="polite" id="copy-live"></div>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>
