@@ -1,6 +1,6 @@
 /* PepperCraft · Scenic
-   页面在没有脚本时也完整可读；这里只做四件事：
-   开服天数、实时在线、复制地址、滚动增强。 */
+   页面在没有脚本时也完整可读；这里只做五件事：
+   开服天数、数字滚动、实时在线、复制地址、滚动增强。 */
 
 (() => {
   'use strict';
@@ -11,6 +11,7 @@
     maxPlayers: 2333,
     pollMs: 60_000,
     resetMs: 2_000,
+    countMs: 1_400,
   };
 
   const $ = (selector, root = document) => root.querySelector(selector);
@@ -39,9 +40,89 @@
   function renderDays() {
     const days = String(daysSince(SITE.start, new Date()));
     for (const el of $$('[data-days]')) {
-      el.textContent = days;
+      const value = $('.stat-value', el);
+      if (value) value.textContent = days;
+      else el.textContent = days;
       el.setAttribute('aria-label', `已开服 ${days} 天`);
     }
+  }
+
+  /* -------------------------------------------------------
+     数字滚动（进入视口时从 0 累加到目标值）
+     ------------------------------------------------------- */
+
+  const prefersLessMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)',
+  );
+
+  const countFormat = new Intl.NumberFormat('en-US');
+
+  function readCount(el) {
+    const value = $('.stat-value', el) ?? el;
+    const target = Number.parseInt(value.textContent.trim(), 10);
+    if (!Number.isFinite(target) || target <= 0) return null;
+    return { value, target, label: el.getAttribute('aria-label') };
+  }
+
+  function countUp(el, target, value, label) {
+    const settle = (shown) => {
+      value.textContent = shown;
+      el.setAttribute('aria-label', label ?? shown);
+    };
+
+    // 尊重系统的“减少动态效果”：直接给出终值，不做逐帧滚动
+    if (prefersLessMotion.matches) {
+      settle(countFormat.format(target));
+      return;
+    }
+
+    const started = performance.now();
+
+    const step = (now) => {
+      const progress = Math.min(1, (now - started) / SITE.countMs);
+      const eased = 1 - (1 - progress) ** 3;
+      if (progress < 1) {
+        value.textContent = countFormat.format(Math.round(target * eased));
+        window.requestAnimationFrame(step);
+        return;
+      }
+      settle(countFormat.format(target));
+    };
+
+    window.requestAnimationFrame(step);
+  }
+
+  function startCount() {
+    const stats = $$('.stat-number');
+    if (!stats.length) return;
+
+    const entries = [];
+    for (const el of stats) {
+      const found = readCount(el);
+      if (found) entries.push([el, found]);
+    }
+    if (!entries.length) return;
+
+    const run = (el, found) => countUp(el, found.target, found.value, found.label);
+
+    if (prefersLessMotion.matches || !('IntersectionObserver' in window)) {
+      for (const [el, found] of entries) run(el, found);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (records) => {
+        for (const record of records) {
+          if (!record.isIntersecting) continue;
+          const found = entries.find(([el]) => el === record.target)?.[1];
+          if (found) run(record.target, found);
+          observer.unobserve(record.target);
+        }
+      },
+      { rootMargin: '0px 0px -6% 0px', threshold: 0.35 },
+    );
+
+    for (const [el] of entries) observer.observe(el);
   }
 
   /* -------------------------------------------------------
@@ -377,6 +458,7 @@
   }
 
   renderDays();
+  startCount();
   startStatus();
   startCopy();
   startNav();
