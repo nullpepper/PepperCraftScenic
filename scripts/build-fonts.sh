@@ -41,7 +41,7 @@ for name in ("index.html", "404.html", "assets/js/main.js", "assets/css/style.cs
 
 # 脚本/页面里会动态出现的短句，避免只扫静态 HTML 时漏字。
 parts.append("这个坐标不存在。回到首页。页面走丢了。看看世界，或者直接进服。")
-parts.append("基岩版怎么进？在游戏的服务器列表里添加；进服后名字前会带一个点，可以用表单。")
+parts.append("基岩版怎么进？在游戏的服务器里添加；进服后 Java 玩家会看到你的名字带 BE- 前缀，可以用图形界面。")
 parts.append("三张图都拍自服务器实景，不是渲染图。联盟与日均数据截至；开服天数自动更新。")
 parts.append("从喜欢的地方开始。山间红石主城花园夜灯木屋。公开接口每分钟更新。")
 parts.append("".join(chr(c) for c in range(32, 127)))

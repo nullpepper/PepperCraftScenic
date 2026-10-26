@@ -32,7 +32,7 @@ python3 -m http.server 8799
 | 服务器地址 / 群号 | 搜 `pepper.ltd`、`754966689`，同步修改 `data-copy` |
 | 首屏、承诺、进服大图 | `assets/img/` 同名 WebP；保留 `width` / `height` |
 | 三张世界图卡 | `redstone-tile.webp`、`garden-tile.webp`、`cabin-tile.webp`，均为 2:3 |
-| 社交分享图 | 当前是 1200×630 站内首屏截图（隐藏实时状态）；换图时同步 `og:image:alt` / `width` / `height` |
+| 社交分享图 | 当前是 1200×630 站内首屏截图（隐藏实时状态、复制按钮等交互元素）；换图时同步 `og:image:alt` / `width` / `height` |
 | 新增中文文案 | 跑一次 `./scripts/build-fonts.sh`，避免子集字体缺字 |
 
 ## 已实现
@@ -51,7 +51,7 @@ python3 -m http.server 8799
 
 - `assets/fonts/pepper-sans-*.woff2` 与 `pepper-serif-bold.woff2` 是 Noto Sans CJK / Noto Serif CJK 的子集，许可见 `assets/fonts/OFL.txt`。
 - 页面文案增删后运行 `./scripts/build-fonts.sh`；脚本默认读取系统 Noto CJK 与 `~/.cache/pptenv/bin/pyftsubset`，可用 `PYFTSUBSET`、`NOTO_DIR` 覆盖。
-- `assets/img/og.jpg` 是手工维护的 1200×630 站内首屏截图；换图时同步 meta 的 `width` / `height` / `alt`。社交平台可能缓存旧图，换完后用平台调试工具重新抓取。
+- `assets/img/og.jpg` 是手工维护的 1200×630 站内首屏截图（隐藏实时状态、复制按钮等交互元素）；换图时同步 meta 的 `width` / `height` / `alt`。社交平台可能缓存旧图，换完后用平台调试工具重新抓取。
 - 世界图卡由 `redstone-1600.webp`、`garden-1280.webp`、`cabin-1280.webp` 竖裁而来；进服整屏仍使用 `garden-1280.webp`。
 
 ## 部署
@@ -69,5 +69,7 @@ python3 -m http.server 8799
 ## 说明
 
 - 联盟数、日均在线为 2026.10 的展示数据；页面已标注截止时间。
+- 版本口径统一为「Java 1.21 及以上」，与文档站 `PepperServer-Document/docs/intro.md`、`docs/connection.md`（服务器版本 26.3）一致；不再写区间上限。
+- FAQ 的红石 / 复制口径按文档站 `docs/rules.md` 对齐：保留「高性能硬件与优化配置、反作弊保障公平」，允许高频红石、刷铁机，但要求控制规模，并禁止利用漏洞复制物品或刷取经济。修改前正文与 FAQPage 结构化数据不一致，现已同步。
 - 真正的“2023 vs 2026 同机位对照”需要一张 2023 年的同构图，当前仓库没有，因此只做了真实时间线，没有伪造拖动对比。
 - 非官方 Minecraft 项目，与 Mojang 无关，完全遵守官方 EULA。© 2023–2026 PepperCraft
