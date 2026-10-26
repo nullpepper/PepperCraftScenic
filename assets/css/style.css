@@ -926,9 +926,9 @@ main,
   font-size: clamp(1.8rem, 3vw, 2.6rem);
 }
 
-/* 角标（“年+”里的 “+” 等）。.stat-value 是数字本身的包裹层，
-   必须排除，否则数字会被一起缩成 0.45em 并抬高。 */
-.stat-number > span:not(.stat-value) {
+/* 角标（“1,345 年+”里的“年+”、“30+”里的“+”）。必须显式挂 .stat-suffix：
+   裸文本节点不受元素选择器影响，曾导致“年+”与“+”一大一小。 */
+.stat-number > .stat-suffix {
   margin-left: 1px;
   font-size: 0.45em;
   font-weight: 600;
