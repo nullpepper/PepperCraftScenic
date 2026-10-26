@@ -43,10 +43,10 @@
   function renderDays() {
     const days = daysSince(SITE.start, new Date());
     for (const el of $$('[data-days]')) {
-      const value = $('.stat-value', el);
-      if (value) value.textContent = String(days);
-      else el.textContent = String(days);
+      // 静态兜底是「1,300 天+」这种长期成立的近似值，不覆盖它，
+      // 只把精确天数交给计数动画（它读 data-count）与 aria-label。
       el.setAttribute('aria-label', `已开服 ${countFormat.format(days)} 天`);
+      el.dataset.count = String(days);
     }
   }
 
@@ -60,15 +60,22 @@
 
   function readCount(el) {
     const value = $('.stat-value', el) ?? el;
-    const target = Number.parseInt(value.textContent.trim(), 10);
+    // 精确值优先取 data-count：静态兜底可能是「1,300 天+」这类近似写法，
+    // 而 parseInt('1,300') 会得到 1。
+    const raw =
+      el.dataset.count ?? value.textContent.replace(/[^\d]/g, '').trim();
+    const target = Number.parseInt(raw, 10);
     if (!Number.isFinite(target) || target <= 0) return null;
     return { value, target, label: el.getAttribute('aria-label') };
   }
 
   function countUp(el, target, value, label) {
+    // 保留静态兜底里的角标（「天+」「+」），只滚动数字
+    const suffix = $('.stat-suffix', el)?.textContent ?? '';
+
     const settle = (shown) => {
       value.textContent = shown;
-      el.setAttribute('aria-label', label ?? shown);
+      el.setAttribute('aria-label', label ?? `${shown}${suffix}`);
     };
 
     // 尊重系统的“减少动态效果”：直接给出终值，不做逐帧滚动
