@@ -37,13 +37,16 @@
     return Math.max(0, diff + 1);
   }
 
+  // 千分位格式化：可见数字与 aria-label 必须用同一种写法
+  const countFormat = new Intl.NumberFormat('en-US');
+
   function renderDays() {
-    const days = String(daysSince(SITE.start, new Date()));
+    const days = daysSince(SITE.start, new Date());
     for (const el of $$('[data-days]')) {
       const value = $('.stat-value', el);
-      if (value) value.textContent = days;
-      else el.textContent = days;
-      el.setAttribute('aria-label', `已开服 ${days} 天`);
+      if (value) value.textContent = String(days);
+      else el.textContent = String(days);
+      el.setAttribute('aria-label', `已开服 ${countFormat.format(days)} 天`);
     }
   }
 
@@ -54,8 +57,6 @@
   const prefersLessMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
   );
-
-  const countFormat = new Intl.NumberFormat('en-US');
 
   function readCount(el) {
     const value = $('.stat-value', el) ?? el;
